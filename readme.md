@@ -54,7 +54,7 @@ describe('Utils', () => {
     });
 ```
 
-We can even nest describe functions to make it even more scannable.
+### We can nest describe functions to make it more scannable.
 
 ```
 describe('Utils', () => {

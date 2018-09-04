@@ -56,6 +56,8 @@ describe('Utils', () => {
 
 ### We can nest describe functions to make it more scannable.
 
+![Nested describe() functions](https://github.com/nugoo1/testing-with-node/blob/master/nested-describe-functions.PNG)
+
 ```
 describe('Utils', () => {
     describe('#add', () => {
@@ -72,4 +74,3 @@ describe('Utils', () => {
         });
     });
 ```
-![Nested describe() functions](https://github.com/nugoo1/testing-with-node/blob/master/nested-describe-functions.PNG)

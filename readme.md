@@ -7,24 +7,28 @@ Supertest was made by the developers of Express. We use this in conjunction with
 
 In server.js
 
-```app.get('/users', (req, res) => {
-    res.status(200).send([
-        {
-            name: 'Andrew Mead',
-            age: 26
-        }, {
-            name: 'Nuwan Goonewardena',
-            age: 25
-        },{
-            name: 'Alex Gordon',
-            age: 23
-        }
-    ]);
-});```
+```
+app.get('/users', (req, res) => {
+        res.status(200).send([
+            {
+                name: 'Andrew Mead',
+                age: 26
+            }, {
+                name: 'Nuwan Goonewardena',
+                age: 25
+            },{
+                name: 'Alex Gordon',
+                age: 23
+            }
+        ]);
+    });
+```
 
-In server.test.js, we use (done) as it is an asynchronous function.
+### In server.test.js, we use (done) as it is an asynchronous function.
 
-```it('should return correct response', (done) => {
+
+```
+it('should return correct response', (done) => {
     request(app)
         .get('/users')
         .expect(200)
@@ -35,21 +39,25 @@ In server.test.js, we use (done) as it is an asynchronous function.
             })
         })
         .end(done);     
-});```
+});
+```
 
 ## Using describe()
 We use describe and pass in an arrow function with all our tests. 
 This let's us categorize our tests to keep our test suite clean & organized.
 
-```describe('Utils', () => {
+```
+describe('Utils', () => {
     it('should add two numbers', () => {
         var res = utils.add(33,11);
         expect(res).toBe(44).toBeA('number');
-    });```
+    });
+```
 
 We can even nest describe functions to make it even more scannable.
 
-```describe('Utils', () => {
+```
+describe('Utils', () => {
     describe('#add', () => {
         it('should add two numbers', () => {
             var res = utils.add(33,11);
@@ -62,4 +70,6 @@ We can even nest describe functions to make it even more scannable.
                 done();
             });
         });
-    });```
+    });
+```
+![Nested describe() functions](https://github.com/nugoo1/testing-with-node/blob/master/nested-describe-functions.PNG)

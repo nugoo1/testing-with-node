@@ -1,14 +1,13 @@
-#Testing Express Applications
+# Testing Express Applications
 
-##Supertest
+## Supertest
 Supertest was made by the developers of Express. We use this in conjunction with expect.
 
 `npm i supertest@2.0.0`
 
 In server.js
 
-```
-app.get('/users', (req, res) => {
+```app.get('/users', (req, res) => {
     res.status(200).send([
         {
             name: 'Andrew Mead',
@@ -21,8 +20,7 @@ app.get('/users', (req, res) => {
             age: 23
         }
     ]);
-});
-```
+});```
 
 In server.test.js, we use (done) as it is an asynchronous function.
 

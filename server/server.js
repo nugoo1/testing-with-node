@@ -22,7 +22,7 @@ app.get('/users', (req, res) => {
             age: 23
         }
     ])
-})
+});
 
 app.listen(3000);
 module.exports.app = app;

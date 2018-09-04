@@ -74,3 +74,70 @@ describe('Utils', () => {
         });
     });
 ```
+
+
+### Test Spies
+Spies let you swap out a real function for a testing utility. When that test function gets called, we can make assertions about it, like being called with certain arguments.
+
+```
+const expect = require('expect');
+
+describe('App', () => {
+    it('should call the spy correctly', () => {
+        var spy = expect.createSpy();
+        spy();
+        expect(spy).toHaveBeenCalled();
+    });
+});
+```
+
+You can also assert whether the spy() function was called with certain arguments:
+
+```
+    spy('Nuwan', 25);
+    expect(spy).toHaveBeenCalledWith('Nuwan', 25);
+```
+
+### Simulating functions
+Replace function with spies, so that when a function gets called, it is called with the spy.
+This lets us assert that the spy function was called with certain arguments.
+
+`npm i rewire@2.5.2 --save-dev`
+
+```
+const rewire = require('rewire');
+```
+
+rewire is used instead of require when you're loading in the file you want to mock out.
+
+```
+var app = rewire('./app');
+```
+
+This loads your file through require but it also adds two functions to to app.js.
+These methods are:
+
+```
+app.__set__
+app.__get__
+```
+
+We use these to mock out various data inside of app.js. Inside of the describe function;
+
+```
+    var db = {
+        saveUser: expect.createSpy()
+    };
+    app.__set__('db', db);
+  
+    it('should call saveUser with user object', () => {
+        var email = 'nuwan@example.com';
+        var password = '123abc'
+
+        app.handleSignup(email, password);
+        expect(db.saveUser).toHaveBeenCalledWith({email, password})
+    });
+});
+```
+
+
